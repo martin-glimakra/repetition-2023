@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        .important {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <form id="martin-form">
+        <input id="form-text" type="text">
+        <input id="martin-checkbox" type="checkbox">
+        <input type="submit">
+    </form>
+    <button id="convert-button">Skapa element från arrayOfObjects</button>
+    <button id="write-button">Skriv ut array till DOM</button>
+    <ul id="martin-list">
+
+    </ul>
+    <script>
+
+        let formText = document.getElementById("form-text")
+        let writeButton = document.getElementById("write-button")
+        let importantCheckbox = document.getElementById("martin-checkbox")
+
+
+        document.getElementById("martin-form").addEventListener("submit", handleFormSubmit)
+        document.getElementById("convert-button").addEventListener("click", handleConvertClick)
+        document.getElementById("write-button").addEventListener("click", handleWriteClick)
+
+        let arrayOfObjects = []
+        let arrayOfElements = []
+
+        function handleFormSubmit (event) {
+            event.preventDefault() 
+            let tempObject = {}
+            tempObject.text = formText.value
+            tempObject.isChecked = importantCheckbox.checked
+            arrayOfObjects.push(tempObject)
+        }
+
+        function handleConvertClick () {
+            arrayOfElements = arrayOfObjects.map(oneObject => {
+                if(oneObject.isChecked) {
+                    return `<li class=important>${oneObject.text}</li>`
+                }
+                else {
+                    return `<li>${oneObject.text}</li>`
+                }
+            })
+        }
+
+        function handleWriteClick () {
+            console.log('test')
+            for (let index = 0; index < arrayOfElements.length; index++) {
+                document.getElementById("martin-list").innerHTML += arrayOfElements[index]
+            }
+        }
+
+    </script>
+</body>
+</html>
