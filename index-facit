@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <form id="martin-form">
+        <input id="form-text" type="text">
+        <input type="submit">
+    </form>
+    <button id="convert-button">Skapa element från arrayOfStrings</button>
+    <button id="write-button">Skriv ut array till DOM</button>
+    <ul id="martin-list">
+
+    </ul>
+    <script>
+        let formText = document.getElementById("form-text")
+        let writeButton = document.getElementById("write-button")
+
+        let arrayOfStrings = []
+        let arrayOfElements = []
+
+        document.getElementById("martin-form").addEventListener("submit", handleFormSubmit)
+        document.getElementById("convert-button").addEventListener("click", handleConvertClick)
+        document.getElementById("write-button").addEventListener("click", handleWriteClick)
+
+        function handleFormSubmit (event) {
+            event.preventDefault() 
+            arrayOfStrings.push(formText.value)
+
+            //använd preventDefault för att inte sidan ska ladda om
+            // använd push för att lägga till det som står i input rutan till arrayOfStrings
+        }
+
+        function handleConvertClick () {
+            arrayOfElements = arrayOfStrings.map(oneString =>  `<li>${oneString}</li>`)
+            // använd map och Template strings för att fylla arrayOfElements med <li> element t.ex <li>${innehåll}</li>`
+        }
+
+        function handleWriteClick () {
+            for (let index = 0; index < arrayOfElements.length; index++) {
+                document.getElementById("martin-list").innerHTML += arrayOfElements[index]
+            }
+            // använd 
+            //     en for loop
+            //     .innerHTML 
+            //     för att fylla martin-list med arrayOfElements
+        }
+
+    </script>
+</body>
+</html>
