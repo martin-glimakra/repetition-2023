@@ -28,26 +28,31 @@
         document.getElementById("write-button").addEventListener("click", handleWriteClick)
 
         function handleFormSubmit (event) {
+            console.log('första raden funktionen handleFormSubmit')
             event.preventDefault() 
             arrayOfStrings.push(formText.value)
 
             //använd preventDefault för att inte sidan ska ladda om
             // använd push för att lägga till det som står i input rutan till arrayOfStrings
+            console.log('sista raden funktionen handleFormSubmit', 'arrayOfStrings:', arrayOfStrings)
         }
 
         function handleConvertClick () {
+            console.log('första raden funktionen handleConvertClick')
             arrayOfElements = arrayOfStrings.map(oneString =>  `<li>${oneString}</li>`)
             // använd map och Template strings för att fylla arrayOfElements med <li> element t.ex <li>${innehåll}</li>`
+            console.log('sista raden funktionen handleConvertClick', 'arrayOfElements:'. arrayOfElements)
         }
 
         function handleWriteClick () {
+            console.log('första raden funktionen handleWriteClick')
             for (let index = 0; index < arrayOfElements.length; index++) {
                 document.getElementById("martin-list").innerHTML += arrayOfElements[index]
             }
             // använd 
             //     en for loop
             //     .innerHTML 
-            //     för att fylla martin-list med arrayOfElements
+            //     för att fylla martin-list med listelement från arrayOfElements
         }
 
     </script>
