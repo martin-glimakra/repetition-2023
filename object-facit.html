@@ -37,14 +37,18 @@
         let arrayOfElements = []
 
         function handleFormSubmit (event) {
+            console.log('första funktionen raden handleFormSubmit')
             event.preventDefault() 
             let tempObject = {}
             tempObject.text = formText.value
             tempObject.isChecked = importantCheckbox.checked
             arrayOfObjects.push(tempObject)
+            console.log('sista raden funktionen handleFormSubmit', 'arrayOfObjects:', arrayOfObjects)
+
         }
 
         function handleConvertClick () {
+            console.log('första raden funktionen handleConvertClick')
             arrayOfElements = arrayOfObjects.map(oneObject => {
                 if(oneObject.isChecked) {
                     return `<li class=important>${oneObject.text}</li>`
@@ -53,10 +57,12 @@
                     return `<li>${oneObject.text}</li>`
                 }
             })
+
+            console.log('sista raden handleConvertClick', 'arrayOfElements:'. arrayOfElements)
         }
 
         function handleWriteClick () {
-            console.log('test')
+            console.log('första raden funktionen handleWriteClick')
             for (let index = 0; index < arrayOfElements.length; index++) {
                 document.getElementById("martin-list").innerHTML += arrayOfElements[index]
             }
